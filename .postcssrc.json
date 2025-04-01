@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "@unocss/postcss": {
+      "config": "./unocss.config.ts"
+    }
+  }
+}
