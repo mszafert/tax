@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 
 #Pocketbase
-pocketbase/pb_data/
+pocketbase/pocketbase
