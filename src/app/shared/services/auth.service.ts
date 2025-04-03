@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import Pocketbase from 'Pocketbase';
+import Pocketbase from 'pocketbase';
 import { BehaviorSubject } from 'rxjs';
 import { UserModel } from '../../interfaces/user-model';
 import { environment } from '../../../environments/environment.development';
