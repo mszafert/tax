@@ -6,6 +6,5 @@ import { PageFooterComponent } from '@sharedComponents/page-footer/page-footer.c
   selector: 'app-login-layout',
   imports: [RouterOutlet, PageFooterComponent],
   templateUrl: './login-layout.component.html',
-  styleUrl: './login-layout.component.css',
 })
 export class LoginLayoutComponent {}
