@@ -14,12 +14,12 @@ export class LoginComponent {
   authService: AuthService = inject(AuthService);
   router: Router = inject(Router);
 
-  emailAddress: string = '';
+  email: string = '';
   password: string = '';
   displayErrorMessage: boolean = false;
 
   login() {
-    this.authService.login(this.emailAddress, this.password).then((res: boolean) => {
+    this.authService.login(this.email, this.password).then((res: boolean) => {
       if (res) {
         this.router.navigateByUrl('/home');
       } else {
