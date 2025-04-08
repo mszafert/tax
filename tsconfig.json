@@ -20,6 +20,7 @@
     "baseUrl": "./",
     "paths": {
       "@components/*": ["src/app/components/*"],
+      "@pages/*": ["src/app/pages/*"],
       "@sharedComponents/*": ["src/app/shared/components/*"]
     }
   },
