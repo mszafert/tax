@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  imports: [CommonModule, FormsModule],
-  templateUrl: './login.component.html'
+  selector: 'app-signin',
+  imports: [CommonModule, FormsModule, RouterLink],
+  templateUrl: './signin.component.html'
 })
-export class LoginComponent {
+export class SigninComponent {
 
   authService: AuthService = inject(AuthService);
   router: Router = inject(Router);
@@ -18,10 +18,10 @@ export class LoginComponent {
   password: string = '';
   displayErrorMessage: boolean = false;
 
-  login() {
-    this.authService.login(this.email, this.password).then((res: boolean) => {
+  signin() {
+    this.authService.signin(this.email, this.password).then((res: boolean) => {
       if (res) {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/dashboard');
       } else {
         this.displayErrorMessage = true;
       }

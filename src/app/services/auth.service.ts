@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import PocketBase, { RecordModel } from 'pocketbase';
 import { BehaviorSubject } from 'rxjs';
-import { UserModel } from '../../interfaces/user-model';
-import { environment } from '../../../environments/environment.development';
-import { RegisterModel } from 'src/app/interfaces/register-model';
+import { UserModel } from '@interfaces/user-model';
+import { environment } from '../../environments/environment.development';
+import { SignupModel } from 'src/app/interfaces/signup-model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
   constructor() { }
 
-  public async login(emailAddress: string, password: string): Promise<boolean> {
+  public async signin(emailAddress: string, password: string): Promise<boolean> {
     const pb = new PocketBase(environment.baseUrl);
     const authData = await pb.collection('users').authWithPassword(emailAddress, password);
 
@@ -23,13 +23,13 @@ export class AuthService {
     return pb.authStore.isValid;
   }
 
-  public async register(registerModel: RegisterModel): Promise<RecordModel> {
+  public async signup(signupModel: SignupModel): Promise<RecordModel> {
     const pb = new PocketBase(environment.baseUrl);
 
-    return await pb.collection('users').create(registerModel);
+    return await pb.collection('users').create(signupModel);
   }
 
-  public async logout() {
+  public async signout() {
     const pb = new PocketBase(environment.baseUrl);
     return pb.authStore.clear();
   }

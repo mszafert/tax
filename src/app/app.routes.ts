@@ -1,23 +1,23 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '@pages/login/login.component';
-import { HomeComponent } from '@pages/home/home.component';
-import { LoginLayoutComponent } from '@components/layouts/login-layout/login-layout.component';
-import { RegisterComponent } from '@pages/register/register.component';
+import { SigninComponent } from '@pages/signin/signin.component';
+import { DashboardComponent } from '@pages/dashboard/dashboard.component';
+import { AuthLayoutComponent } from '@components/layouts/auth-layout/auth-layout.component';
+import { SignupComponent } from '@pages/signup/signup.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LoginLayoutComponent,
+    component: AuthLayoutComponent,
     children: [
-      { path: '', component: LoginComponent, pathMatch: 'full' },
+      { path: '', component: SigninComponent, pathMatch: 'full' },
     ]
   },
   {
-    path: 'register',
-    component: LoginLayoutComponent,
+    path: 'signup',
+    component: AuthLayoutComponent,
     children: [
-      { path: '', component: RegisterComponent },
+      { path: '', component: SignupComponent },
     ]
   },
-  { path: 'home', component: HomeComponent },
+  { path: 'dashboard', component: DashboardComponent },
 ];
