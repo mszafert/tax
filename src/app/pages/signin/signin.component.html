@@ -1,6 +1,6 @@
 <div class="w-md px-10">
   <h1 class="text-3xl font-bold">Sign in to Admin</h1>
-  <form class="mt-15 flex flex-col gap-8 grow">
+  <form class="mt-15 flex flex-col gap-5 grow">
     <div class="flex flex-col gap-1">
       <label class="font-bold" for="email">Email:</label>
       <input
@@ -23,7 +23,14 @@
         required
       >
     </div>
-    <button class="bg-black c-white cursor-pointer h-14 hover:bg-zinc-600 rounded-4xl" type="submit" (click)="signin()">Sign In</button>
-    <p class="text-center">Don't have an account? <a routerLink="/signup" class="font-bold underline">Sign up</a></p>
+    <button
+      class="bg-black c-white cursor-pointer h-14 hover:bg-zinc-600 rounded-4xl disabled:bg-zinc disabled:cursor-not-allowed"
+      type="submit"
+      [disabled]="email == '' || password == ''"
+      (click)="signIn()"
+    >
+      Sign In
+    </button>
+    <p class="text-center text-sm">Don't have an account? <a routerLink="/signup" class="font-bold underline">Sign up</a></p>
   </form>
 </div>

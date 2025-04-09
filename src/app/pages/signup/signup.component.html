@@ -1,6 +1,6 @@
 <div class="w-md px-10">
   <h1 class="text-3xl font-bold">Sign up to Admin</h1>
-  <form class="mt-15 flex flex-col gap-10 grow" [formGroup]="fg" (ngSubmit)="signup()">
+  <form class="mt-15 flex flex-col gap-5 grow" [formGroup]="fg" (ngSubmit)="signUp()">
     <div class="flex flex-col gap-1">
       <label class="font-bold" for="userName">Username:</label>
       <input
@@ -12,7 +12,7 @@
       >
     </div>
     <div class="flex flex-col gap-1">
-      <label class="font-bold" for="email">Email:</label>
+      <label class="font-bold" for="email">Email: </label>
       <input
         class="border-1 border-zinc-200 inline-block focus:border-purple-400 focus:outline-4 h-14 transition-all outline-0 hover:outline-4 outline-solid outline-purple-100 px-3 rounded-lg rounded w-full"
         type="text"
@@ -41,6 +41,7 @@
         formControlName="passwordConfirm"
       >
     </div>
-    <button class="bg-black c-white cursor-pointer h-14 hover:bg-zinc-600 rounded-4xl" type="submit" [disabled]="!fg.valid">Create Account</button>
+    <button class="bg-black c-white cursor-pointer h-14 hover:bg-zinc-600 rounded-4xl disabled:bg-zinc disabled:cursor-not-allowed" type="submit" [disabled]="!fg.valid">Create Account</button>
+    <p class="text-center text-sm">Already have an account? <a routerLink="/" class="font-bold underline">Sign In</a></p>
   </form>
 </div>

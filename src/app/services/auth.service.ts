@@ -14,7 +14,7 @@ export class AuthService {
   user$ = this.userSubject.asObservable();
   constructor() { }
 
-  public async signin(emailAddress: string, password: string): Promise<boolean> {
+  public async signIn(emailAddress: string, password: string): Promise<boolean> {
     const pb = new PocketBase(environment.baseUrl);
     const authData = await pb.collection('users').authWithPassword(emailAddress, password);
 
@@ -23,13 +23,13 @@ export class AuthService {
     return pb.authStore.isValid;
   }
 
-  public async signup(signupModel: SignupModel): Promise<RecordModel> {
+  public async signUp(signupModel: SignupModel): Promise<RecordModel> {
     const pb = new PocketBase(environment.baseUrl);
 
     return await pb.collection('users').create(signupModel);
   }
 
-  public async signout() {
+  public async signOut() {
     const pb = new PocketBase(environment.baseUrl);
     return pb.authStore.clear();
   }

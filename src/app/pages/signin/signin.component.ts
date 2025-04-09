@@ -18,8 +18,8 @@ export class SigninComponent {
   password: string = '';
   displayErrorMessage: boolean = false;
 
-  signin() {
-    this.authService.signin(this.email, this.password).then((res: boolean) => {
+  signIn() {
+    this.authService.signIn(this.email, this.password).then((res: boolean) => {
       if (res) {
         this.router.navigateByUrl('/dashboard');
       } else {

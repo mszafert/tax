@@ -1,13 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RecordModel } from 'pocketbase';
 import { SignupModel } from '@interfaces/signup-model';
 import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html'
 })
 export class SignupComponent implements OnInit {
@@ -26,7 +26,7 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  signup() {
+  signUp() {
     const signupModel: SignupModel = {
       email: this.fg.get('email')!.value,
       password: this.fg.get('password')!.value,
@@ -34,11 +34,14 @@ export class SignupComponent implements OnInit {
       userName: this.fg.get('userName')!.value,
     };
 
-    this.authService.signup(signupModel)
+    this.authService.signUp(signupModel)
     .then((res: RecordModel) => {
       if (res['token'] != '') {
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/dashboard');
       }
+    })
+    .catch((err: any) => {
+      console.error('Error creating user', err);
     });
   }
 }
